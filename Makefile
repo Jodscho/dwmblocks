@@ -1,9 +1,16 @@
 PREFIX ?= /usr/local
 CC ?= cc
 LDFLAGS = -lX11
+HOST=$(shell hostname)
+
+ifeq ($(HOST), core)
+	ANY_VAR=LAPTOP 
+else
+	ANY_VAR=PC
+endif
 
 output: dwmblocks.c blocks.def.h blocks.h
-	${CC}  dwmblocks.c $(LDFLAGS) -o dwmblocks
+	${CC}  -D$(ANY_VAR) dwmblocks.c $(LDFLAGS) -o dwmblocks
 blocks.h:
 	cp blocks.def.h $@
 

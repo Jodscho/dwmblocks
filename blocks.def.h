@@ -6,7 +6,9 @@ static const Block blocks[] = {
     {"", "status_weather.sh", 1800, 0},
     {"", "status_pg.sh", 0, 16},
     {"", "status_volume.sh", 0, 17},
-    //{"", "status_battery.sh", 350, 0},
+    #ifdef LAPTOP
+    {"", "status_battery.sh", 350, 0},
+    #endif
 	{"", "status_date.sh", 60, 0},
 };
 
